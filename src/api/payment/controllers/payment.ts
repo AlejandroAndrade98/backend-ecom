@@ -1,33 +1,24 @@
-'use strict'
-
-import { threadId } from "worker_threads";
+'use strict';
 
 const { MercadoPagoConfig, Preference } = require('mercadopago');
 
+// Configuración (verifica según la versión de la SDK)
 const client = new MercadoPagoConfig({
     accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN,
-    options: { timeout: 5000 } // Timeout para evitar bloqueos
+    options: { timeout: 5000 }
 });
-
-// TEORIAS
-// -p;eticiomnes
-// -callstack/multi hiolo multi threadId
-
-// PRACTIOCA
-
-// -como hago peticiones al back (URL,METODO,BODYS,HEADERS)
-
-
-
 
 module.exports = {
   createOrder: async (ctx) => {
     try {
-      console.log("sadasdasdasdasdasdasdasdasdasd",ctx.request.body) // LO QUE STA RECIBIENDO EL BACK
+      console.log("Datos recibidos:", ctx.request.body);
       const { productId, productName, quantity, unit_price } = ctx.request.body;
 
+      // Si tienes totalPrice, podrías usarlo aquí
+      // const { totalPrice } = ctx.request.body;
+
       const preference = new Preference(client);
-      console.log('ssss', quantity)
+
       const response = await preference.create({
         body: {
           items: [
@@ -36,8 +27,9 @@ module.exports = {
               title: productName,
               quantity: Number(quantity),
               unit_price: Number(unit_price),
-              currency_id: "COP",// Asegúrate de usar el código correcto
-              total_amount: Number
+              currency_id: "COP"  // Asegúrate de que sea el código correcto para tu moneda
+              // Elimina o reemplaza total_amount según corresponda:
+              // total_amount: totalPrice
             }
           ],
           back_urls: {
@@ -48,9 +40,9 @@ module.exports = {
           auto_return: "approved",
         }
       });
-      // RESPONDIENDO EL BACK
-      console.log('aaaaaa',response)
-      ctx.send(response); // ¡Este envío de respuesta faltaba!
+
+      console.log("Respuesta de MercadoPago:", response);
+      ctx.send(response);
       
     } catch (error) {
       console.error("Error en createOrder:", error);
