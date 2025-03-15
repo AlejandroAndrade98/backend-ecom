@@ -1,0 +1,38 @@
+{
+  "name": "backend-ecommerce",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "scripts": {
+  "build": "npx strapi build",
+  "deploy": "npx strapi deploy",
+  "develop": "npx strapi develop",
+  "start": "npx strapi start",
+  "strapi": "npx strapi"
+},
+  "dependencies": {
+    "@strapi/plugin-cloud": "5.7.0",
+    "@strapi/plugin-users-permissions": "5.7.0",
+    "@strapi/strapi": "5.7.0",
+    "better-sqlite3": "11.3.0",
+    "mercadopago": "^2.3.0",
+    "next": "^15.2.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": "20.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "ffe8da98-3e9c-4483-a3f8-7f34ff8af8db"
+  }
+}
