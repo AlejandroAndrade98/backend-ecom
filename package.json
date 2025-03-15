@@ -4,12 +4,12 @@
   "private": true,
   "description": "A Strapi application",
   "scripts": {
-  "build": "npx strapi build",
-  "deploy": "npx strapi deploy",
-  "develop": "npx strapi develop",
-  "start": "npx strapi start",
-  "strapi": "npx strapi"
-},
+    "build": "npx strapi build",
+    "deploy": "npx strapi deploy",
+    "develop": "npx strapi develop",
+    "start": "npx strapi start",
+    "strapi": "npx strapi"
+  },
   "dependencies": {
     "@strapi/plugin-cloud": "5.7.0",
     "@strapi/plugin-users-permissions": "5.7.0",
@@ -20,6 +20,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-neon-tech-db-branches": "^0.1.18",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
